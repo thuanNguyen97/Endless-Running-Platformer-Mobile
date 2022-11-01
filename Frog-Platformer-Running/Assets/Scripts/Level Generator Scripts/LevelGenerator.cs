@@ -17,4 +17,82 @@ public class LevelGenerator : MonoBehaviour
 
     private float platformLastPositionX;
 
+    private enum PlatformType
+    {
+        None,
+        Flat,
+
+    }    
+        
+    private class PlatformPositionInfo
+    {
+        public PlatformType platformType;
+        public float positionY;
+        public bool hasMonster;
+        public bool hasHealthCollectable;
+
+        //constructor
+        public PlatformPositionInfo(PlatformType type, float posY, bool has_monster, bool has_Health)
+        {
+            this.platformType = type;
+            this.positionY = posY;
+            this.hasMonster = has_monster;
+            this.hasHealthCollectable = has_Health;
+        }
+    }    //class platform pos information
+
+    void FillOutPositionInfo(PlatformPositionInfo[] platformInfo)
+    {
+        int currentPlatformInfoIndex = 0;
+
+        for (int i = 0; i < startPlatformLenght; i++)
+        {
+            platformInfo [currentPlatformInfoIndex].platformType = PlatformType.Flat;
+            platformInfo [currentPlatformInfoIndex].positionY = 0f;
+
+            currentPlatformInfoIndex++;
+        }    
+
+        while (currentPlatformInfoIndex < levelLenght - endPlatformLenght)
+        {
+            if (platformInfo[currentPlatformInfoIndex - 1].platformType != PlatformType.None)
+            {
+                currentPlatformInfoIndex++;
+                continue;
+            }
+
+            float platformPositionY = Random.Range(platformPositionMinY, platformPositionMaxY);
+
+            int platformLenght = Random.Range(platformLenghtMin, platformLenghtMax);
+
+            for (int i  = 0; i < platformLenght; i++)
+            {
+                bool has_Monster = (Random.Range(0f, 1f) < chanceForMonsterExistence);
+                bool has_healthCollectable = (Random.Range(0f, 1f) < chanceForCollectable);
+
+                platformInfo[currentPlatformInfoIndex].platformType = PlatformType.Flat;
+                platformInfo[currentPlatformInfoIndex].positionY = platformPositionY;
+                platformInfo[currentPlatformInfoIndex].hasMonster = has_Monster;
+                platformInfo[currentPlatformInfoIndex].hasHealthCollectable = has_healthCollectable;
+
+                currentPlatformInfoIndex++;
+
+                if (currentPlatformInfoIndex > (levelLenght - endPlatformLenght))
+                {
+                    currentPlatformInfoIndex = levelLenght - endPlatformLenght;
+                    break;
+                }    
+
+                for (int i = 0; i < endPlatformLenght; i++)
+                {
+                    platformInfo[currentPlatformInfoIndex].platformType = PlatformType.Flat;
+                    platformInfo[currentPlatformInfoIndex].positionY = 0f;
+
+                    currentPlatformInfoIndex++;
+                }    
+            }    
+
+        } // while loop
+    }
+
 } // class

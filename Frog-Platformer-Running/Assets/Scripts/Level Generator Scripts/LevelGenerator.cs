@@ -41,6 +41,11 @@ public class LevelGenerator : MonoBehaviour
         }
     }    //class platform pos information
 
+    private void Start()
+    {
+        GenerateLevel();
+    }
+
     void FillOutPositionInfo(PlatformPositionInfo[] platformInfo)
     {
         int currentPlatformInfoIndex = 0;
@@ -83,7 +88,7 @@ public class LevelGenerator : MonoBehaviour
                     break;
                 }    
 
-                for (int i = 0; i < endPlatformLenght; i++)
+                for (i = 0; i < endPlatformLenght; i++)
                 {
                     platformInfo[currentPlatformInfoIndex].platformType = PlatformType.Flat;
                     platformInfo[currentPlatformInfoIndex].positionY = 0f;
@@ -94,5 +99,55 @@ public class LevelGenerator : MonoBehaviour
 
         } // while loop
     }
+
+    void CreatePlatformsFromPositionInfo(PlatformPositionInfo[] platformPositionInfo)
+    {
+        for (int i = 0; i < platformPositionInfo.Length; i++)
+        {
+            PlatformPositionInfo positionInfo = platformPositionInfo[i];
+
+            if (positionInfo.platformType == PlatformType.None)
+            {
+                continue;
+            }
+
+            Vector3 platformPosition;
+
+            // here we are going to check if the game is started or not
+            platformPosition = new Vector3(distanceBetweenPlatform * i, positionInfo.positionY, 0);
+
+            // save the platform postion x for later use 
+
+            Transform createBlock = (Transform)Instantiate(platformPrefabs, platformPosition, Quaternion.identity);
+            createBlock.parent = platformParent;
+
+            if (positionInfo.hasMonster)
+            {
+                // code later
+            }
+
+            if (positionInfo.hasHealthCollectable)
+            {
+                // code later
+            }
+
+
+        }    // for loop
+    }    
+
+    public void GenerateLevel()
+    {
+        PlatformPositionInfo[] platformInfo = new PlatformPositionInfo[levelLenght];
+
+        for (int i = 0; i < platformInfo.Length; i++)
+        {
+            platformInfo[i] = new PlatformPositionInfo(PlatformType.None, -1f, false, false);
+        }    
+
+        FillOutPositionInfo(platformInfo);
+
+        CreatePlatformsFromPositionInfo(platformInfo);
+
+    }    
 
 } // class

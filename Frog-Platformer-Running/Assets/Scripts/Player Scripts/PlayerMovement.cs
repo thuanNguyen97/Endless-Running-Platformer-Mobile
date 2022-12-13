@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMove();
+        PlayerGrounded(); 
+        PlayerJump();
     }
 
     void PlayerMove()
@@ -30,5 +32,19 @@ public class PlayerMovement : MonoBehaviour
         _myBody.velocity = new Vector3(movementSpeed, _myBody.velocity.y, 0);
     }    
 
+    void PlayerGrounded()
+    {
+        //create a sphere to check if player touching the ground
+        _isGrounded = Physics.OverlapSphere(groundCheckPosition.position, radius, layerGround).Length > 0;
 
+        Debug.Log("Is player grounded " + _isGrounded);
+    }
+
+    void PlayerJump()
+    {
+        if (Input.GetKey(KeyCode.Space) && _isGrounded)
+        {
+            _myBody.AddForce(new Vector3(0, jumpPower, 0));
+        }
+    }
 }   // class

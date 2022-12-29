@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _myBody;
     private bool _isGrounded;
     private bool _playerJumped;
+    private bool _canDoubleJump;
 
     void Awake()
     {
@@ -42,9 +43,18 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerJump()
     {
-        if (Input.GetKey(KeyCode.Space) && _isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && !_isGrounded && _canDoubleJump)
+        {
+            _canDoubleJump = false;
+            _myBody.AddForce(new Vector3(0, secondJumpPower, 0));
+            Debug.Log("First jump");
+        }
+        else if (Input.GetKeyUp(KeyCode.Space) && _isGrounded)
         {
             _myBody.AddForce(new Vector3(0, jumpPower, 0));
+            _playerJumped = true;
+            _canDoubleJump = true;
+            Debug.Log("Second jump");
         }
     }
-}   // class
+}   // class 

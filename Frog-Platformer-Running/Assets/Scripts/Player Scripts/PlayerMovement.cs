@@ -16,18 +16,38 @@ public class PlayerMovement : MonoBehaviour
     private bool _playerJumped;
     private bool _canDoubleJump = true;
 
+    private PlayerAnimation _playerAnim;
+
+    private bool _gameStarted;
+
     void Awake()
     {
         _myBody = GetComponent<Rigidbody>();    // get Rigidbody component
+        _playerAnim = GetComponent<PlayerAnimation>();  // get PLayerAnimation components
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartGame());
     }
 
     void FixedUpdate()
     {
-        PlayerMove();
-        PlayerGrounded(); 
-        PlayerJump();
+        if (_gameStarted)
+        {
+            PlayerMove();
+            PlayerGrounded();
+        }    
         
     }
+
+    private void Update()   // this method is only for PlayerJump()
+    {
+        if (_gameStarted)
+        {
+            PlayerJump();
+        }
+    }    
 
     void PlayerMove()
     {
@@ -40,6 +60,13 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = Physics.OverlapSphere(groundCheckPosition.position, radius, layerGround).Length > 0;
 
         Debug.Log("Is player grounded " + _isGrounded);
+
+        if (_isGrounded && _playerJumped)
+        {
+            _playerJumped = false;
+
+            _playerAnim.DidLand();
+        }    
     }
 
     void PlayerJump()
@@ -53,14 +80,25 @@ public class PlayerMovement : MonoBehaviour
         {
             _canDoubleJump = false;
             _myBody.AddForce(new Vector3(0, secondJumpPower, 0));
-            Debug.Log("First jump");
+            Debug.Log("Second Jump");
         }
         else if (Input.GetKeyUp(KeyCode.Space) && _isGrounded)
         {
+            _playerAnim.DidJump();  //play the jump animation
+
             _myBody.AddForce(new Vector3(0, jumpPower, 0));
             _playerJumped = true;
             _canDoubleJump = true;
-            Debug.Log("Second jump");
+            Debug.Log("First jump");
         }
+
+        
+    }
+
+    IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(2f);
+        _gameStarted = true;
+        _playerAnim.PlayerRun();
     }
 }   // class 

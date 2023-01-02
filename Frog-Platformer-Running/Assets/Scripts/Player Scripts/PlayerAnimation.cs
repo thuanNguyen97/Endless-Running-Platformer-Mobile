@@ -20,6 +20,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void DidJump()
     {
+        _anim.Stop(Tags.ANIMATION_RUN);
         _anim.Play(Tags.ANIMATION_JUMP);
         _anim.PlayQueued(Tags.ANIMATION_JUMP_FALL);
     }    

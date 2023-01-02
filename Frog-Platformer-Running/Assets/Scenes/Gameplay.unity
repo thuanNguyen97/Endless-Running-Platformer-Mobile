@@ -372,6 +372,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1790679391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4635941461114136905, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
+  m_PrefabInstance: {fileID: 4635941460975394662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1790679397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790679391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5a377774a5d49499d2959eb38f8565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2013297659
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,15 +499,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 249444488, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.086
       objectReference: {fileID: 0}
     - target: {fileID: 4635941460424921525, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
       propertyPath: jumpPower
-      value: 70
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 4635941460424921525, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
       propertyPath: secondJumpPower
-      value: 70
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 4635941461113779561, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
       propertyPath: m_RootOrder

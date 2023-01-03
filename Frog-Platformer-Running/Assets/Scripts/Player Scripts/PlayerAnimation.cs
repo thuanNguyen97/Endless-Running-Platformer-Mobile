@@ -36,5 +36,7 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayerRun()
     {
         _anim.Play(Tags.ANIMATION_RUN);
-    }    
+    }   
+    
+
 } //class

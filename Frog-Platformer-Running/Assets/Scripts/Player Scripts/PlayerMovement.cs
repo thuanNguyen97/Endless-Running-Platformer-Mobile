@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _gameStarted;
 
+    public GameObject smokePosition;
+
     void Awake()
     {
         _myBody = GetComponent<Rigidbody>();    // get Rigidbody component
@@ -99,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _gameStarted = true;
+        smokePosition.SetActive(true);
         _playerAnim.PlayerRun();
     }
 }   // class 

@@ -22,10 +22,13 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject smokePosition;
 
+    private BGScroller _bgScroller;
+
     void Awake()
     {
         _myBody = GetComponent<Rigidbody>();    // get Rigidbody component
         _playerAnim = GetComponent<PlayerAnimation>();  // get PLayerAnimation components
+        _bgScroller = GameObject.Find(Tags.BACKGROUND_GAME_OBJ).GetComponent<BGScroller>();
     }
 
     private void Start()
@@ -101,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _gameStarted = true;
+        _bgScroller.canScroll = true;
         smokePosition.SetActive(true);
         _playerAnim.PlayerRun();
     }

@@ -8,6 +8,9 @@ public class Tags : MonoBehaviour
     public static string PLAYER_TAG = "Player";
     public static string PLATFORM_TAG = "Platform";
 
+    // GAMEOBJECT NAMES
+    public static string BACKGROUND_GAME_OBJ = "Background";
+
     // ANIMATION TAGS
     public static string ANIMATION_TAG = "idle";
     public static string ANIMATION_RUN = "run";

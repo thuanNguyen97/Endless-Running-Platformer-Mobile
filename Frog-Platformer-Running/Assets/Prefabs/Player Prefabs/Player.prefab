@@ -2023,6 +2023,7 @@ GameObject:
   - component: {fileID: 4635941460424921525}
   - component: {fileID: 1790679397}
   - component: {fileID: 2142330017247843222}
+  - component: {fileID: 2132322180849981510}
   - component: {fileID: 4635941460975394664}
   m_Layer: 8
   m_Name: Player
@@ -2151,6 +2152,19 @@ MonoBehaviour:
   soundEffectPitchRandomness: 0.05
   gerericFootSound: {fileID: 8300000, guid: 63f5e9733c5dc4e4f92aedf71292c3ad, type: 3}
   metalFootSound: {fileID: 8300000, guid: 0c92ac289b23aad4eb13172f5c5ef096, type: 3}
+--- !u!114 &2132322180849981510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4635941461114136905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dacf6fad2b17e842bd5a63f5d0e0d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceBeforeNewPlatform: 120
 --- !u!82 &4635941460975394664
 AudioSource:
   m_ObjectHideFlags: 0

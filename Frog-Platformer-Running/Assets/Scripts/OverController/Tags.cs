@@ -8,6 +8,8 @@ public class Tags : MonoBehaviour
     public static string PLAYER_TAG = "Player";
     public static string PLATFORM_TAG = "Platform";
     public static string MORE_PLATFORM_TAG = "MorePlatform";
+    public static string HEALTH_TAG = "Health";
+    public static string MONSTER_TAG = "Monster";
 
     // GAMEOBJECT NAMES
     public static string BACKGROUND_GAME_OBJ = "Background";

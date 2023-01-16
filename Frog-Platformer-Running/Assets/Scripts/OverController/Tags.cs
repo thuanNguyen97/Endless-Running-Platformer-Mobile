@@ -10,6 +10,8 @@ public class Tags : MonoBehaviour
     public static string MORE_PLATFORM_TAG = "MorePlatform";
     public static string HEALTH_TAG = "Health";
     public static string MONSTER_TAG = "Monster";
+    public static string MONSTER_BULLET_TAG = "MonsterBullet";
+    public static string PLAYER_BULLET_TAG = "PlayerBullet";
 
     // GAMEOBJECT NAMES
     public static string BACKGROUND_GAME_OBJ = "Background";

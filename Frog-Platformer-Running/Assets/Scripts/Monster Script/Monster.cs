@@ -93,4 +93,31 @@ public class Monster : MonoBehaviour
         }
     }
 
+    void MonsterDied()
+    {
+        Vector3 effectPos = transform.position;
+        effectPos.y += 2f;
+        Instantiate(MonsterDiedEffect, effectPos, Quaternion.identity);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider target)
+    {
+        if (target.tag == Tags.PLAYER_BULLET_TAG)
+        {
+            MonsterDied();
+        }    
+    }
+
+    
+
+    void OnCollisionEnter(Collision target)
+    {
+        if (target.collider.tag == Tags.PLAYER_TAG)
+        {
+            MonsterDied();
+        }    
+    }
+
 }   // class

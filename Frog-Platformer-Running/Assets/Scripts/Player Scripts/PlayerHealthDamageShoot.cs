@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerHealthDamageShoot : MonoBehaviour
 {
+    [SerializeField]
+    private Transform playerBullet;
+
     public float distanceBeforeNewPlatform = 120f;
 
     private LevelGenerator _levelGenerator;
@@ -13,17 +16,24 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         _levelGenerator = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGenerator>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-        
+        Fire();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Fire()
     {
-        
-    }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Vector3 bulletPos = transform.position;
+            bulletPos.y += 1.5f;
+            bulletPos.x += 1f;
+            Transform newBullet = Instantiate(playerBullet, bulletPos, Quaternion.identity);
+
+            newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1500f);
+            newBullet.parent = transform;
+        }    
+    }    
 
     private void OnTriggerEnter(Collider target)
     {

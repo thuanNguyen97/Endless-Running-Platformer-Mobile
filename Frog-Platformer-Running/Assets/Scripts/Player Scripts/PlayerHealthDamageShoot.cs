@@ -16,9 +16,14 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         _levelGenerator = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGenerator>();
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         Fire();
+    }
+
+    void FixedUpdate()
+    {
+        //Fire();
     }
 
     void Fire()

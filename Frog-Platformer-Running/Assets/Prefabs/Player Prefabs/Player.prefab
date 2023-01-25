@@ -108,6 +108,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeEffect: {fileID: 3251138834621257, guid: 1fc9ef1f6c89a4346873eb36ee4bdd1c, type: 3}
   smokePosition: {fileID: 1994826431}
+--- !u!1 &1086606896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086606897}
+  - component: {fileID: 1086606898}
+  - component: {fileID: 1086606899}
+  m_Layer: 8
+  m_Name: Collector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1086606897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086606896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4635941461113779561}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1086606898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086606896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 30, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1086606899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086606896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a625e0e9334b4b54692fe460031b6f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171205143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,13 +2099,14 @@ Transform:
   m_GameObject: {fileID: 4635941461114136905}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.06, y: 0.226, z: -0.51}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.5000001, y: 1.5, z: 1.5000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4635941461113779429}
   - {fileID: 4635941461113779431}
   - {fileID: 249444488}
   - {fileID: 1994826432}
+  - {fileID: 1086606897}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -2115,7 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44fbe4ca3b37b54698afcb8177a3bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 10
   jumpPower: 650
   secondJumpPower: 650
   groundCheckPosition: {fileID: 249444488}
@@ -2164,6 +2223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dacf6fad2b17e842bd5a63f5d0e0d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBullet: {fileID: 3568493785627189764, guid: 2efc536b63dd03546b605f81b7cc65b0, type: 3}
   distanceBeforeNewPlatform: 120
 --- !u!82 &4635941460975394664
 AudioSource:

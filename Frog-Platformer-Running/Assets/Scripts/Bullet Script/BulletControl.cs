@@ -32,7 +32,7 @@ public class BulletControl : MonoBehaviour
         if (target.tag == Tags.PLAYER_TAG || target.tag == Tags.MONSTER_TAG || target.tag == Tags.MONSTER_BULLET_TAG
             || target.tag == Tags.PLAYER_BULLET_TAG)
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); //turn off bullet
         }
     }
 }

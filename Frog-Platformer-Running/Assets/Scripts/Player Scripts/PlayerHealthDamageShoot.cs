@@ -42,6 +42,18 @@ public class PlayerHealthDamageShoot : MonoBehaviour
 
     private void OnTriggerEnter(Collider target)
     {
+        if (target.tag == Tags.MONSTER_BULLET_TAG)
+        {
+            //inform game controller that player has died
+            Destroy(gameObject);
+        }
+
+        if (target.tag == Tags.HEALTH_TAG || target.tag == Tags.BOUNDS_TAG)
+        {
+            //inform gameplayer controller that we have collect the health
+            target.gameObject.SetActive(false);
+        }    
+
         if (target.tag == Tags.MORE_PLATFORM_TAG)
         {
             //reposition the MorePlatform object
@@ -50,6 +62,15 @@ public class PlayerHealthDamageShoot : MonoBehaviour
             target.transform.position = temp;
 
             _levelGenerator.GenerateLevel(false);
+        }
+    }
+
+    void OnCollisionEnter(Collision target)
+    {
+        if (target.gameObject.tag == Tags.MONSTER_BULLET_TAG)
+        {
+            //inform game controller that player has died
+            Destroy(gameObject);
         }
     }
 

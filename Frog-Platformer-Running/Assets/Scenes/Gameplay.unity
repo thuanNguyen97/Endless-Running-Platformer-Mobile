@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311411715}
   - component: {fileID: 311411714}
+  - component: {fileID: 311411716}
   m_Layer: 0
   m_Name: Level Generator
   m_TagString: Untagged
@@ -241,7 +242,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311411713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 206bc58ee0d6d904882a8c56adcf5dff, type: 3}
   m_Name: 
@@ -282,6 +283,32 @@ Transform:
   m_Father: {fileID: 332129494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &311411716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311411713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb484eab16e4c0458cbea3629ee95fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _platform: {fileID: 5156771501041436420, guid: b075a96a327e0944cacdfd3bc63671c6, type: 3}
+  _platform_Parent: {fileID: 124926486}
+  _monster: {fileID: 0}
+  _monster_Parent: {fileID: 0}
+  _health_Collectable: {fileID: 0}
+  _health_Collectable_Parent: {fileID: 0}
+  _levelLength: 100
+  _distance_Between_Platform: 3
+  _MIN_Position_Y: 0
+  _MAX_Position_Y: 0
+  _chanceForMonsterExistence: 0.25
+  _chanceForHealthCollectableExistence: 0.1
+  _healthCollectable_MinY: 1
+  _healthCollectable_MaxY: 3
 --- !u!1 &332129493
 GameObject:
   m_ObjectHideFlags: 0

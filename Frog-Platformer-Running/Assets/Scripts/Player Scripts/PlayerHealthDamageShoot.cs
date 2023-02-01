@@ -10,10 +10,12 @@ public class PlayerHealthDamageShoot : MonoBehaviour
     public float distanceBeforeNewPlatform = 120f;
 
     private LevelGenerator _levelGenerator;
+    private LevelGeneratorPooling _levelGeneratorPooling;
 
     private void Awake()
     {
         _levelGenerator = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGenerator>();
+        _levelGeneratorPooling = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGeneratorPooling>();
     }
 
     private void Update()
@@ -61,7 +63,9 @@ public class PlayerHealthDamageShoot : MonoBehaviour
             temp.x += distanceBeforeNewPlatform;
             target.transform.position = temp;
 
-            _levelGenerator.GenerateLevel(false);
+            //_levelGenerator.GenerateLevel(false);
+
+            _levelGeneratorPooling.PoolingPlatforms();
         }
     }
 

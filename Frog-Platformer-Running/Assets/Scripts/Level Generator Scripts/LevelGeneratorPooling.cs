@@ -67,6 +67,7 @@ public class LevelGeneratorPooling : MonoBehaviour
             platform_Array[i].parent = _platform_Parent;
 
             //spaw monster and health collectables
+            SpawnHealthAndMonster(platformPosition, i, true);
         }
 
     }
@@ -87,9 +88,52 @@ public class LevelGeneratorPooling : MonoBehaviour
                 platform_Array[i].position = platformPosition;
 
                 _platformLastPositionX = platformPosition.x;
+
+                //spawn health and monster
+                SpawnHealthAndMonster(platformPosition, i, false);
             }
 
         }    
     }    
+
+    void SpawnHealthAndMonster(Vector3 platformPosition, int i, bool gameStarted)
+    {
+        if (i > 2)  // we don't want to spawn health and monster in front of the player when the game started
+        {
+            if (Random.Range(0f, 1f) < _chanceForMonsterExistence)
+            {
+                if (gameStarted)
+                {
+                    platformPosition = new Vector3(_distance_Between_Platform * i, platformPosition.y + 0.1f, 0); 
+                }
+                else
+                {
+                    platformPosition = new Vector3(_distance_Between_Platform + _platformLastPositionX, platformPosition.y + 0.1f, 0);
+                }
+
+                Transform createMonster = (Transform) Instantiate(_monster, platformPosition, Quaternion.Euler(0, -90, 0));
+
+                createMonster.parent = _monster_Parent;
+            } // if statement for monster
+
+            if (Random.Range(0f, 1f) < _chanceForHealthCollectableExistence)
+            {
+                if (gameStarted)
+                {
+                    platformPosition = new Vector3(_distance_Between_Platform * i, 
+                        platformPosition.y + Random.Range(_healthCollectable_MinY, _healthCollectable_MaxY), 0);
+                }   
+                else
+                {
+                    platformPosition = new Vector3(_distance_Between_Platform + _platformLastPositionX,
+                        platformPosition.y + Random.Range(_healthCollectable_MinY, _healthCollectable_MaxY), 0);
+                }
+
+                Transform createHealthCollectable = (Transform)Instantiate(_health_Collectable, platformPosition, Quaternion.identity);
+
+                createHealthCollectable.parent = _health_Collectable_Parent;
+            }    
+        }
+    }
 
 }   //class

@@ -302,9 +302,9 @@ MonoBehaviour:
   _health_Collectable: {fileID: 0}
   _health_Collectable_Parent: {fileID: 0}
   _levelLength: 100
-  _distance_Between_Platform: 3
+  _distance_Between_Platform: 5
   _MIN_Position_Y: 0
-  _MAX_Position_Y: 0
+  _MAX_Position_Y: 8
   _chanceForMonsterExistence: 0.25
   _chanceForHealthCollectableExistence: 0.1
   _healthCollectable_MinY: 1

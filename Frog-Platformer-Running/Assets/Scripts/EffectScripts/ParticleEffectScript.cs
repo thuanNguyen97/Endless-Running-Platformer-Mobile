@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleEffectScript : MonoBehaviour
 {
-    public float timer = 1.5f;
+    public float timer = 1f;
 
     // Start is called before the first frame update
     void Start()

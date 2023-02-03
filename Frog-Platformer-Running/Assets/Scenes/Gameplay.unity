@@ -297,14 +297,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _platform: {fileID: 5156771501041436420, guid: b075a96a327e0944cacdfd3bc63671c6, type: 3}
   _platform_Parent: {fileID: 124926486}
-  _monster: {fileID: 0}
-  _monster_Parent: {fileID: 0}
-  _health_Collectable: {fileID: 0}
-  _health_Collectable_Parent: {fileID: 0}
+  _monster: {fileID: 863639310418374055, guid: 0a061ad6c45905648b2ff6d6c814e3f6, type: 3}
+  _monster_Parent: {fileID: 96286642}
+  _health_Collectable: {fileID: 1991022074158286492, guid: b8bed114070966d4ea668a4b6412149b, type: 3}
+  _health_Collectable_Parent: {fileID: 1717422425}
   _levelLength: 100
   _distance_Between_Platform: 5
   _MIN_Position_Y: 0
-  _MAX_Position_Y: 8
+  _MAX_Position_Y: 0
   _chanceForMonsterExistence: 0.25
   _chanceForHealthCollectableExistence: 0.1
   _healthCollectable_MinY: 1

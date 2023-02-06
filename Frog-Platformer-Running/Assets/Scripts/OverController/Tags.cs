@@ -18,6 +18,11 @@ public class Tags : MonoBehaviour
     public static string BACKGROUND_GAME_OBJ = "Background";
     public static string LEVEL_GENERATOR_OBJ = "Level Generator";
 
+    // SCENE NAMES
+    public static string GAMEPLAY_SCENE = "Gameplay";
+    public static string MAINMENU_SCENE = "MainMenu";
+
+
     // ANIMATION TAGS
     public static string ANIMATION_TAG = "idle";
     public static string ANIMATION_RUN = "run";

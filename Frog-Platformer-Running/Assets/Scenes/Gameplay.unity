@@ -1107,7 +1107,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1568789354}
   - component: {fileID: 1568789356}
-  - component: {fileID: 1568789355}
   m_Layer: 0
   m_Name: UI Camera
   m_TagString: Untagged
@@ -1131,14 +1130,6 @@ Transform:
   m_Father: {fileID: 1628805574}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1568789355
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568789353}
-  m_Enabled: 1
 --- !u!20 &1568789356
 Camera:
   m_ObjectHideFlags: 0

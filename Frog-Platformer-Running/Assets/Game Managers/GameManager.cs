@@ -6,6 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [HideInInspector]
+    public bool gameStartedFromMainMenu, gameRestartedPlayerDied;
+
+    [HideInInspector]
+    public float score, health, level; 
+
     
     void Awake()
     {

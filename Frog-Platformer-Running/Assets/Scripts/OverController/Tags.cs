@@ -17,6 +17,10 @@ public class Tags : MonoBehaviour
     // GAMEOBJECT NAMES
     public static string BACKGROUND_GAME_OBJ = "Background";
     public static string LEVEL_GENERATOR_OBJ = "Level Generator";
+    public static string SCORE_TEXT_OBJ = "Score Text";
+    public static string HEALTH_TEXT_OBJ = "Health Text";
+    public static string LEVEL_TEXT_OBJ = "Level Text";
+
 
     // SCENE NAMES
     public static string GAMEPLAY_SCENE = "Gameplay";

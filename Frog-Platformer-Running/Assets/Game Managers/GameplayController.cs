@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameplayController : MonoBehaviour
 {
 
-    // Start is called before the first frame update
-    void Start()
+    private Text scoreText, healthText, levelText;
+
+    private float score, health, level;
+
+
+    void Awake()
     {
-        
+        scoreText = GameObject.Find(Tags.SCORE_TEXT_OBJ).GetComponent<Text>();
+        healthText = GameObject.Find(Tags.HEALTH_TEXT_OBJ).GetComponent<Text>();
+        levelText = GameObject.Find(Tags.LEVEL_TEXT_OBJ).GetComponent<Text>();
     }
 
     void OnEneble()
@@ -29,7 +36,23 @@ public class GameplayController : MonoBehaviour
             if (GameManager.instance.gameStartedFromMainMenu)
             {
                 Debug.Log("Game was started from Main Menu");
+                GameManager.instance.gameStartedFromMainMenu = false;
+
+                score = 0;
+                health = 3;
+                level = 0;
             }
+            else if (GameManager.instance.gameRestartedPlayerDied)
+            {
+                GameManager.instance.gameRestartedPlayerDied = false;
+
+                score = GameManager.instance.score;
+                health = GameManager.instance.health;
+            }
+
+            scoreText.text = score.ToString();
+            healthText.text = health.ToString();
+            levelText.text = level.ToString();
         }
     }
     

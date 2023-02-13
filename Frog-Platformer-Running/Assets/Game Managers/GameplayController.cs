@@ -19,7 +19,7 @@ public class GameplayController : MonoBehaviour
         levelText = GameObject.Find(Tags.LEVEL_TEXT_OBJ).GetComponent<Text>();
     }
 
-    void OnEneble()
+    void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneWasLoaded;
     }
@@ -31,12 +31,13 @@ public class GameplayController : MonoBehaviour
 
     void OnSceneWasLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == Tags.GAMEPLAY_SCENE)
+        if (scene.name == "Gameplay")
         {
+            
             if (GameManager.instance.gameStartedFromMainMenu)
             {
                 Debug.Log("Game was started from Main Menu");
-                GameManager.instance.gameStartedFromMainMenu = false;
+                //GameManager.instance.gameStartedFromMainMenu = false;
 
                 score = 0;
                 health = 3;

@@ -53,6 +53,7 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         if (target.tag == Tags.HEALTH_TAG || target.tag == Tags.BOUNDS_TAG)
         {
             //inform gameplayer controller that we have collect the health
+            GameplayController.instance.IncrementHealth();
             target.gameObject.SetActive(false);
         }    
 

@@ -106,6 +106,7 @@ public class Monster : MonoBehaviour
     {
         if (target.tag == Tags.PLAYER_BULLET_TAG)
         {
+            GameplayController.instance.IncrementScore(200);    //when kill a monster get 200 points
             MonsterDied();
         }    
     }

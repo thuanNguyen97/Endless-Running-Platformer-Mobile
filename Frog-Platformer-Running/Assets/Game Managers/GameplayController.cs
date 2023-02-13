@@ -6,30 +6,50 @@ using UnityEngine.UI;
 
 public class GameplayController : MonoBehaviour
 {
+    public static GameplayController instance;
 
     private Text scoreText, healthText, levelText;
 
     private float score, health, level;
 
+    [HideInInspector]
+    public bool canCountScore;
 
     void Awake()
     {
+        MakeInstance();
+
         scoreText = GameObject.Find(Tags.SCORE_TEXT_OBJ).GetComponent<Text>();
         healthText = GameObject.Find(Tags.HEALTH_TEXT_OBJ).GetComponent<Text>();
         levelText = GameObject.Find(Tags.LEVEL_TEXT_OBJ).GetComponent<Text>();
     }
 
-    void OnEnable()
+    void Update()
+    {
+        IncrementScore(1);
+        Debug.Log("Score is incrementing");
+    }
+
+    void MakeInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }    
+    }    
+
+    void OnEnable() //delegated
     {
         SceneManager.sceneLoaded += OnSceneWasLoaded;
     }
 
-    void OnDisable()
+    void OnDisable()    //delegated
     {
         SceneManager.sceneLoaded -= OnSceneWasLoaded;
+        instance = null;
     }
 
-    void OnSceneWasLoaded(Scene scene, LoadSceneMode mode)
+    void OnSceneWasLoaded(Scene scene, LoadSceneMode mode)  //delegated
     {
         if (scene.name == "Gameplay")
         {
@@ -56,5 +76,43 @@ public class GameplayController : MonoBehaviour
             levelText.text = level.ToString();
         }
     }
-    
+
+    public void TakeDamage()
+    {
+        health--;
+
+        if (health >= 0)
+        {
+            // restart the game
+            healthText.text = health.ToString();
+
+
+        }
+        else 
+        {
+            
+        }
+        
+    }    
+
+    public void IncrementHealth()
+    {
+        health++;
+        healthText.text = health.ToString();
+    }    
+
+    public void IncrementScore(float scoreValue)
+    {
+        if (canCountScore)
+        {
+            score += scoreValue;
+            scoreText.text = score.ToString();
+        }    
+    }
+
+    IEnumerator PlayerDied(string sceneName)
+    {
+        yield return new WaitForSecondsRealtime(2f);
+    }    
+
 }   //class

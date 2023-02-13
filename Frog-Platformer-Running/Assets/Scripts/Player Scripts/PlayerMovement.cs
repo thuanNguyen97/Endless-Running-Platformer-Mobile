@@ -104,7 +104,11 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _gameStarted = true;
-        _bgScroller.canScroll = true;
+
+        _bgScroller.canScroll = true;   //scroll the background
+
+        GameplayController.instance.canCountScore = true;   //can count score
+
         smokePosition.SetActive(true);
         _playerAnim.PlayerRun();
     }

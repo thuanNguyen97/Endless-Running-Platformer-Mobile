@@ -44,13 +44,16 @@ public class PlayerHealthDamageShoot : MonoBehaviour
 
     private void OnTriggerEnter(Collider target)
     {
-        if (target.tag == Tags.MONSTER_BULLET_TAG)
+        if (target.tag == Tags.MONSTER_BULLET_TAG || target.tag == Tags.BOUNDS_TAG)
         {
+            //player take damage
+            GameplayController.instance.TakeDamage();
+
             //inform game controller that player has died
             Destroy(gameObject);
         }
 
-        if (target.tag == Tags.HEALTH_TAG || target.tag == Tags.BOUNDS_TAG)
+        if (target.tag == Tags.HEALTH_TAG)
         {
             //inform gameplayer controller that we have collect the health
             GameplayController.instance.IncrementHealth();
@@ -72,11 +75,15 @@ public class PlayerHealthDamageShoot : MonoBehaviour
 
     void OnCollisionEnter(Collision target)
     {
-        if (target.gameObject.tag == Tags.MONSTER_BULLET_TAG)
+        if (target.gameObject.tag == Tags.MONSTER_TAG)
         {
+            //player take damage
+            GameplayController.instance.TakeDamage();
+
             //inform game controller that player has died
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+            
         }
-    }
+    }  
 
 }

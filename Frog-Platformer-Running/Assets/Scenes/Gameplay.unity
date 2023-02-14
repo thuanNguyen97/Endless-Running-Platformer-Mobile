@@ -408,8 +408,8 @@ MonoBehaviour:
   _distance_Between_Platform: 5
   _MIN_Position_Y: 0
   _MAX_Position_Y: 0
-  _chanceForMonsterExistence: 0.25
-  _chanceForHealthCollectableExistence: 0.1
+  _chanceForMonsterExistence: 1
+  _chanceForHealthCollectableExistence: 0
   _healthCollectable_MinY: 1
   _healthCollectable_MaxY: 3
 --- !u!1 &332129493
@@ -1734,6 +1734,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 853797378}
     m_Modifications:
+    - target: {fileID: 4635941460424921524, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4635941461113779561, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1744,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4635941461113779561, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7324104
+      value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: 4635941461113779561, guid: d05c8df22b515ac4382773f68c8796bd, type: 3}
       propertyPath: m_LocalPosition.z

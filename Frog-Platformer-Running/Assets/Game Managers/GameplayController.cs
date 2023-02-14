@@ -15,6 +15,8 @@ public class GameplayController : MonoBehaviour
     [HideInInspector]
     public bool canCountScore;
 
+    private BGScroller bgScroller;
+
     void Awake()
     {
         MakeInstance();
@@ -22,6 +24,8 @@ public class GameplayController : MonoBehaviour
         scoreText = GameObject.Find(Tags.SCORE_TEXT_OBJ).GetComponent<Text>();
         healthText = GameObject.Find(Tags.HEALTH_TEXT_OBJ).GetComponent<Text>();
         levelText = GameObject.Find(Tags.LEVEL_TEXT_OBJ).GetComponent<Text>();
+
+        bgScroller = GameObject.Find(Tags.BACKGROUND_GAME_OBJ).GetComponent<BGScroller>();
     }
 
     void Update()
@@ -83,14 +87,16 @@ public class GameplayController : MonoBehaviour
 
         if (health >= 0)
         {
-            // restart the game
+            //remain health
             healthText.text = health.ToString();
 
-
+            // restart the game
+            StartCoroutine(PlayerDied(Tags.GAMEPLAY_SCENE));
+            
         }
         else 
         {
-            
+            StartCoroutine(PlayerDied(Tags.MAINMENU_SCENE));
         }
         
     }    
@@ -112,7 +118,15 @@ public class GameplayController : MonoBehaviour
 
     IEnumerator PlayerDied(string sceneName)
     {
+        canCountScore = false;  //player died so cannot count score
+        bgScroller.canScroll = false;   // stop scroll the background
+
+        GameManager.instance.score = score;
+        GameManager.instance.health = health;
+        GameManager.instance.gameRestartedPlayerDied = true;
+
         yield return new WaitForSecondsRealtime(2f);
+        SceneManager.LoadScene(sceneName);  //reload the scene
     }    
 
 }   //class

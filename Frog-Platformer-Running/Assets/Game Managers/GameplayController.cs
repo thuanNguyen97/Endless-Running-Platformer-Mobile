@@ -55,13 +55,13 @@ public class GameplayController : MonoBehaviour
 
     void OnSceneWasLoaded(Scene scene, LoadSceneMode mode)  //delegated
     {
-        if (scene.name == "Gameplay")
+        if (scene.name == Tags.GAMEPLAY_SCENE)
         {
             
             if (GameManager.instance.gameStartedFromMainMenu)
             {
                 Debug.Log("Game was started from Main Menu");
-                //GameManager.instance.gameStartedFromMainMenu = false;
+                GameManager.instance.gameStartedFromMainMenu = false;
 
                 score = 0;
                 health = 3;
@@ -121,8 +121,8 @@ public class GameplayController : MonoBehaviour
         canCountScore = false;  //player died so cannot count score
         bgScroller.canScroll = false;   // stop scroll the background
 
-        GameManager.instance.score = score;
-        GameManager.instance.health = health;
+        GameManager.instance.score = this.score;
+        GameManager.instance.health = this.health;
         GameManager.instance.gameRestartedPlayerDied = true;
 
         yield return new WaitForSecondsRealtime(2f);

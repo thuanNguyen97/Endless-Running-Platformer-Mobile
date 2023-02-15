@@ -20,6 +20,7 @@ public class Tags : MonoBehaviour
     public static string SCORE_TEXT_OBJ = "Score Text";
     public static string HEALTH_TEXT_OBJ = "Health Text";
     public static string LEVEL_TEXT_OBJ = "Level Text";
+    public static string PAUSE_PANEL_OBJ = "Pause Panel";
 
 
     // SCENE NAMES

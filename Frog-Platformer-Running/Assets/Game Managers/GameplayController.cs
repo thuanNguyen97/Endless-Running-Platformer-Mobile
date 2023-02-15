@@ -17,6 +17,8 @@ public class GameplayController : MonoBehaviour
 
     private BGScroller bgScroller;
 
+    private GameObject pausePanel;
+
     void Awake()
     {
         MakeInstance();
@@ -26,6 +28,9 @@ public class GameplayController : MonoBehaviour
         levelText = GameObject.Find(Tags.LEVEL_TEXT_OBJ).GetComponent<Text>();
 
         bgScroller = GameObject.Find(Tags.BACKGROUND_GAME_OBJ).GetComponent<BGScroller>();
+
+        pausePanel = GameObject.Find(Tags.PAUSE_PANEL_OBJ);
+        pausePanel.SetActive(false);    //deactivate the pause panel 
     }
 
     void Update()
@@ -128,5 +133,40 @@ public class GameplayController : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
         SceneManager.LoadScene(sceneName);  //reload the scene
     }    
+
+    public void PauseGame()
+    {
+        //stop score counting
+        canCountScore = false;
+
+        bgScroller.canScroll = false;
+
+        //activate the pause panel
+        pausePanel.gameObject.SetActive(true);
+
+        //pause everything
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        canCountScore = true;
+
+        pausePanel.gameObject.SetActive(false);
+
+        Time.timeScale = 1f;
+    }
+
+    public void BackToMainMenu()
+    {
+        Time.timeScale = 1f;    //make the game still running in the main menu scene
+        SceneManager.LoadScene(Tags.MAINMENU_SCENE);
+    }
+
+    public void Reload()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(Tags.GAMEPLAY_SCENE);
+    }
 
 }   //class

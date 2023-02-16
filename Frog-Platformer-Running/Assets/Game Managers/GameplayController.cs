@@ -8,6 +8,9 @@ public class GameplayController : MonoBehaviour
 {
     public static GameplayController instance;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private Text scoreText, healthText, levelText;
 
     private float score, health, level;
@@ -31,6 +34,14 @@ public class GameplayController : MonoBehaviour
 
         pausePanel = GameObject.Find(Tags.PAUSE_PANEL_OBJ);
         pausePanel.SetActive(false);    //deactivate the pause panel 
+    }
+
+    private void Start()
+    {
+        if (GameManager.instance.canPlayMusic)
+        {
+            audioSource.Play();
+        }
     }
 
     void Update()

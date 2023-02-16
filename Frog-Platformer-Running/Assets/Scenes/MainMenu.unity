@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 125434284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840005421}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ControlMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &125434284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ad4fafabd8de6d4fb60f7232e35cff6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34f5124fd8765824b9fe3a82384a05f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -835,6 +847,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f978feb1cc39c71449fd4c7a81296b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicBtn: {fileID: 125434283}
+  soundOff: {fileID: 21300000, guid: 34f5124fd8765824b9fe3a82384a05f3, type: 3}
+  soundOn: {fileID: 21300000, guid: 5ad4fafabd8de6d4fb60f7232e35cff6, type: 3}
 --- !u!1 &840720771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1083,7 @@ MonoBehaviour:
   score: 0
   health: 0
   level: 0
+  canPlayMusic: 1
 --- !u!1 &1582754329
 GameObject:
   m_ObjectHideFlags: 0

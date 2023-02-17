@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthDamageShoot : MonoBehaviour
 {
@@ -12,10 +13,15 @@ public class PlayerHealthDamageShoot : MonoBehaviour
     private LevelGenerator _levelGenerator;
     private LevelGeneratorPooling _levelGeneratorPooling;
 
+    private Button shootBtn;
+
     private void Awake()
     {
         _levelGenerator = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGenerator>();
         _levelGeneratorPooling = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGeneratorPooling>();
+
+        shootBtn = GameObject.Find(Tags.SHOOT_BUTTON_OBJ).GetComponent<Button>();
+        shootBtn.onClick.AddListener(() => Shoot());    // add function to touch button
     }
 
     private void Update()
@@ -41,6 +47,17 @@ public class PlayerHealthDamageShoot : MonoBehaviour
             newBullet.parent = transform;
         }    
     }    
+
+    void Shoot()    //shoot for touch button
+    {
+        Vector3 bulletPos = transform.position;
+        bulletPos.y += 1.5f;
+        bulletPos.x += 1f;
+        Transform newBullet = Instantiate(playerBullet, bulletPos, Quaternion.identity);
+
+        newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1500f);
+        newBullet.parent = transform;
+    }
 
     private void OnTriggerEnter(Collider target)
     {

@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+ 
 public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _gameStarted;
 
+    private Button jumpBtn;
+
     public GameObject smokePosition;
 
     private BGScroller _bgScroller;
@@ -29,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
         _myBody = GetComponent<Rigidbody>();    // get Rigidbody component
         _playerAnim = GetComponent<PlayerAnimation>();  // get PLayerAnimation components
         _bgScroller = GameObject.Find(Tags.BACKGROUND_GAME_OBJ).GetComponent<BGScroller>();
+
+        jumpBtn = GameObject.Find(Tags.JUMP_BUTTON_OBJ).GetComponent<Button>();
+        jumpBtn.onClick.AddListener(() => Jump());  //call the function for button
     }
 
     private void Start()
@@ -64,14 +70,7 @@ public class PlayerMovement : MonoBehaviour
         //create a sphere to check if player touching the ground
         _isGrounded = Physics.OverlapSphere(groundCheckPosition.position, radius, layerGround).Length > 0;
 
-        Debug.Log("Is player grounded " + _isGrounded);
-
-        if (_isGrounded && _playerJumped)
-        {
-            _playerJumped = false;
-
-            _playerAnim.DidLand();
-        }    
+        //Debug.Log("Is player grounded " + _isGrounded);          
     }
 
     void PlayerJump()
@@ -96,8 +95,25 @@ public class PlayerMovement : MonoBehaviour
             _canDoubleJump = true;
             Debug.Log("First jump");
         }
+    }
 
-        
+    public void Jump()  //for jump button
+    {
+        if (!_isGrounded && _canDoubleJump)
+        {
+            _canDoubleJump = false;
+            _myBody.AddForce(new Vector3(0, secondJumpPower, 0));
+            Debug.Log("Second Jump");
+        }
+        else if (_isGrounded)
+        {
+            _playerAnim.DidJump();  //play the jump animation
+
+            _myBody.AddForce(new Vector3(0, jumpPower, 0));
+            _playerJumped = true;
+            _canDoubleJump = true;
+            Debug.Log("First jump");
+        }
     }
 
     IEnumerator StartGame()
@@ -111,5 +127,17 @@ public class PlayerMovement : MonoBehaviour
 
         smokePosition.SetActive(true);
         _playerAnim.PlayerRun();
+    }
+
+    void OnCollisionEnter(Collision target)
+    {
+        if (target.gameObject.tag == Tags.PLATFORM_TAG)
+        {
+            if (_playerJumped)
+            {
+                _playerJumped = false;
+                _playerAnim.DidLand();
+            }
+        }
     }
 }   // class 

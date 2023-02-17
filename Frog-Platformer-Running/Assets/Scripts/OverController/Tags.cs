@@ -21,6 +21,9 @@ public class Tags : MonoBehaviour
     public static string HEALTH_TEXT_OBJ = "Health Text";
     public static string LEVEL_TEXT_OBJ = "Level Text";
     public static string PAUSE_PANEL_OBJ = "Pause Panel";
+    public static string SHOOT_BUTTON_OBJ = "ShootBtn";
+    public static string JUMP_BUTTON_OBJ = "JumpBtn";
+
 
 
     // SCENE NAMES
